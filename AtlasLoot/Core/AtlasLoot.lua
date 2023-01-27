@@ -1379,8 +1379,6 @@ function AtlasLoot_GetLODModule(dataSource)
 		return "AtlasLoot_WrathoftheLichKing";
 	elseif (dataSource=="AtlasLootSirus") then
 		return "AtlasLoot_Sirus";
-	elseif (dataSource=="AtlasLootPVP") then
-		return "AtlasLoot_PVP"; 
 	end
 end
 
@@ -1389,14 +1387,13 @@ AtlasLoot_LoadAllModules()
 Used to load all available LoD modules
 ]]
 function AtlasLoot_LoadAllModules()
-	local orig, bc, wotlk, craft, world, sirus, pvp;
+	local orig, bc, wotlk, craft, world, sirus;
     orig, _ = LoadAddOn("AtlasLoot_OriginalWoW");
     bc, _ = LoadAddOn("AtlasLoot_BurningCrusade");
     craft, _ = LoadAddOn("AtlasLoot_Crafting");
     world, _ = LoadAddOn("AtlasLoot_WorldEvents");
     wotlk, _ = LoadAddOn("AtlasLoot_WrathoftheLichKing");
     sirus, _ = LoadAddOn("AtlasLoot_Sirus");
-	pvp, _ = LoadAddOn("AtlasLoot_PVP");
     local flag=0;
 	if not orig then
 		LoadAddOn("AtlasLoot_OriginalWoW");
@@ -1420,10 +1417,6 @@ function AtlasLoot_LoadAllModules()
 	end
     if not sirus then
 		LoadAddOn("AtlasLoot_Sirus");
-		flag=1;
-	end
-	if not pvp then
-		LoadAddOn("AtlasLoot_PVP");
 		flag=1;
 	end
 	if flag == 1 then
